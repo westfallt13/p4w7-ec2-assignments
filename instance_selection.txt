@@ -1,0 +1,18 @@
+Based on the video, break down the example instance name m5.2xlarge. Clearly identify and explain what each of the following components signifies:
+
+The letter m : Refers to the instance family (e.g., general purpose, compute optimized, etc)
+The number 5 : Indicates the generation of the instance. AWS continually releases new generations with improved performance and efficiency.
+The term 2xlarge : Defines the size and capacity of the instance, which determines the number of vCPUs, RAM, and networking power.
+
+For your client projects, identify the correct instance family type from the video and provide the requested explanations for these three scenarios in your file:
+
+The Startup Web Server: You need a balanced mix of compute, memory, and networking for a small student or medium-sized project. Which instance category do you use, and which specific instance family/tier is available under the AWS Free Tier for learning?
+General purpose, t2.micro or t3.micro, because it provides a balanced mix of compute, memory and networking for typical web applications.
+
+The High-Speed BI Reporting Engine: A Business Intelligence application needs to connect to direct databases, perform massive data imports, and manipulate data locally in real time. Which instance category optimizes this workflow, 
+and why is high memory capacity critical here?
+Memory optimized because BI systems process huge datasets in memory for faster analytics, imports, and real-time data manipulation. High memory reduces delays from disk access.
+
+The High-Concurrency Ticketing Platform: A concert ticketing system experiences massive, sudden spikes with millions of simultaneous transactional requests when sales open. Which instance category provides the disk throughput and IOPS 
+required to keep the system from crashing?
+Storage optimized, because they provide very high disk throughput and IOPS, helping handle massive transactional spikes without bottlenecks or crashes.
