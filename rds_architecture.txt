@@ -1,0 +1,37 @@
+# Amazon RDS Architecture & Elastic Storage Analysis
+
+## Managed Services Evaluation
+
+**1. Definition and Automated Tasks**
+Amazon Relational Database Service (Amazon RDS) is a fully managed relational database service by AWS that makes it easy to set up, operate, and scale databases in the cloud. It automates or eliminates the following traditional database administration tasks:
+- Hardware provisioning and ongoing server maintenance
+- Initial software installation and database setup
+- Periodic operating system and database engine patching
+- Database backups, snapshots, and point-in-time recovery
+
+**2. Natively Supported Relational Database Engines**
+The six relational database engines natively supported by Amazon RDS are:
+1. Amazon Aurora
+2. PostgreSQL
+3. MySQL
+4. MariaDB
+5. Oracle Database
+6. Microsoft SQL Server
+
+**3. Multi-AZ Configuration**
+The primary architectural goal of an Amazon RDS Multi-AZ configuration is to provide High Availability (HA) and automated disaster recovery. It maintains a synchronous standby replica in a different Availability Zone to automatically failover if the primary database becomes unresponsive. 
+This configuration minimizes two critical business continuity metrics:
+- Recovery Time Objective (RTO): Time taken to restore the database to a functional state.
+- Recovery Point Objective (RPO): Acceptable amount of data loss (which is effectively zero due to synchronous replication).
+
+## Elastic Storage Analysis
+
+**1. RDS Storage Auto Scaling**
+RDS Storage Auto Scaling dynamically manages database growth by actively monitoring available free disk space. If the free space drops beneath a targeted threshold (e.g., falls below 10%), RDS automatically allocates and scales up additional storage volume seamlessly, without requiring manual intervention or causing any database downtime.
+
+**2. Financial Costs Safety Setting**
+To strictly control financial costs and avoid runaway or infinite storage scaling, infrastructure administrators must configure a **Maximum Storage Threshold** (or Maximum Storage Limit). Once the storage reaches this defined ceiling, auto-scaling operations stop.
+
+**3. Critical Contrast with EC2**
+- **Supported Auto-Scaling Layer (RDS):** Standard RDS natively supports automatic scaling for the **Storage** resource layer. 
+- **Unsupported Auto-Scaling Layer (unlike EC2):** Unlike Amazon EC2 instances (which can use EC2 Auto Scaling to automatically spin up additional instances based on load changes), standard Amazon RDS explicitly does **NOT** support horizontal or vertical auto-scaling for **Compute (CPU)** and **Memory (RAM)** resources. Scaling DB instances for more CPU or RAM requires a manual modification of the database instance class.
